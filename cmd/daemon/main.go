@@ -102,17 +102,6 @@ func main() {
 	createSwap(absPath, startOpts.swapSizeMb)
 }
 
-/*
-	grep wasp.file /proc/swaps && swapoff -v $FSROOT/var/tmp/wasp.file
-	grep wasp.file /proc/swaps || {
-		local SWAPFILE=$FSROOT/var/tmp/wasp.file
-		dd if=/dev/zero of=$SWAPFILE bs=1M count=$SWAP_SIZE_MB
-		chmod 0600 $SWAPFILE
-		mkswap $SWAPFILE
-		swapon $SWAPFILE
-	}
-*/
-
 func isSwapOn(swapfile string) bool {
 	f, err := os.Open("/proc/swaps")
 	if err != nil {

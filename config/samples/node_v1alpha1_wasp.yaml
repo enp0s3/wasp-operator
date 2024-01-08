@@ -1,0 +1,12 @@
+apiVersion: node.kubevirt.io/v1alpha1
+kind: Wasp
+metadata:
+  labels:
+    app.kubernetes.io/name: wasp
+    app.kubernetes.io/instance: wasp-sample
+    app.kubernetes.io/part-of: wasp-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: wasp-operator
+  name: wasp-sample
+spec:
+  # TODO(user): Add fields here
