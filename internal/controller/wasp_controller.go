@@ -39,6 +39,7 @@ type WaspReconciler struct {
 //+kubebuilder:rbac:groups=node.kubevirt.io,resources=wasps,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=node.kubevirt.io,resources=wasps/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=node.kubevirt.io,resources=wasps/finalizers,verbs=update
+//+kubebuilder:rbac:groups=core,resources=events,verbs=create;patch
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -53,6 +54,9 @@ func (r *WaspReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.
 	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
+
+	//Reconcile again after X time:
+	//return ctrl.Result{RequeueAfter: 5 * time.Minute}, nil
 
 	return ctrl.Result{}, nil
 }
