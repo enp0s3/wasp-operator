@@ -19,6 +19,7 @@ package controller
 import (
 	"context"
 	"k8s.io/client-go/tools/record"
+	"sigs.k8s.io/controller-runtime/pkg/controller"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -60,5 +61,6 @@ func (r *WaspReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.
 func (r *WaspReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&nodev1alpha1.Wasp{}).
+		WithOptions(controller.Options{MaxConcurrentReconciles: 2}).
 		Complete(r)
 }
